@@ -6,11 +6,22 @@ App.Router.map(function() {
 
 App.IndexRoute = Ember.Route.extend({
     model: function() {
-        return ['red', 'yellow', 'blue'];
+        var questions = [
+            {
+                title : "How do I feed hamsters?",
+                author : "Tom Dale"
+            },
+            {
+                title : "Are humans insane?",
+                author : "Tomster the Hamster"
+            }
+        ];
+
+        return questions;
     }
 });
 
-App.IndexController = Ember.Controller.extend({
+App.IndexController = Ember.ArrayController.extend({
     siteTitle : "Welcome to Emberoverflow",
 
     currentTime : function() {
