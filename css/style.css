@@ -1,5 +1,5 @@
 /* Put your CSS here */
-.ember-application {
+html, .ember-application {
     margin: 20px;
 }
 
