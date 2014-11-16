@@ -10,8 +10,9 @@ module("Integration tests", {
     setup: function() {
         // before each test, ensure the application is ready to run.
         Ember.run(App, App.advanceReadiness);
-        // hides the ember testing container
-        $("#ember-testing-container").css("visibility", "hidden");
+        // hides the ember testing container if needed
+        if(window.location.search.indexOf("&nocontainer=true") !== -1)
+            $("#ember-testing-container").css("visibility", "hidden");
     },
 
     teardown: function() {
