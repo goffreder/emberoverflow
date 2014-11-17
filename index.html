@@ -36,9 +36,31 @@
 
                 <ul>
                     {{#each}}
-                        <li>{{title}} - asked by {{author}}</li>
+                        <li>
+                            {{#link-to "question" this}}
+                                {{title}}
+                            {{/link-to}}
+
+                            (asked by {{author}})
+                        </li>
                     {{/each}}
                 </ul>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" id="question">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>{{title}}</h2>
+
+                <p>
+                    {{question}}
+                </p>
+
+                <p>
+                    Asked by {{author}}
+                </p>
             </div>
         </div>
     </script>
