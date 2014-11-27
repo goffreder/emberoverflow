@@ -23,6 +23,20 @@
                     {{/link-to}}
                 </li>
             </ul>
+
+            <ul class="nav navbar-nav">
+                {{#if userSignedIn}}
+                    <li>
+                        <a href="#" {{action "signOut"}}>
+                            Welcome, {{signedInUser.fullname}} - Sign out
+                        </a>
+                    </li>
+                {{else}}
+                    <li>
+                        {{#link-to "sign-in"}}Sign In{{/link-to}}
+                    </li>
+                {{/if}}
+            </ul>
         </nav>
 
         {{outlet}}
@@ -79,6 +93,31 @@
         </div>
     </script>
 
+    <script type="text/x-handlebars" id="sign-in">
+        <div class="row">
+            <div class="col-md-8">
+                {{#if controllers.application.userSignedIn}}
+                    <p>You are already signed-in!</p>
+                {{else}}
+                    <form {{action "signIn" on="submit"}}>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+
+                            {{input id="email"
+                                value=email
+                                classNames="form-control"
+                                placeholder="Enter your email address"}}
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">
+                            Sign In
+                        </button>
+                    </form>
+                {{/if}}
+            </div>
+        </div>
+    </script>
+
     <script src="js/libs/jquery-1.10.2.js"></script>
     <script src="js/libs/handlebars-v1.3.0.js"></script>
     <script src="js/libs/ember-1.8.1.js"></script>
@@ -91,6 +130,7 @@
     <script src="js/fixtures/question_fixtures.js"></script>
     <script src="js/fixtures/user_fixtures.js"></script>
     <script src="js/routes/application_routes.js"></script>
+    <script src="js/controllers/sign_in_controller.js"></script>
     <script src="js/controllers/application_controllers.js"></script>
     <!-- to activate the test runner, add the "?test" query string parameter -->
     <script src="tests/runner.js"></script>
