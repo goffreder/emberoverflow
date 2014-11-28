@@ -68,6 +68,12 @@ test("user will be able to log in", function() {
 
     andThen(function() {
         equal(
+            localStorage.currentUser,
+            202,
+            "User Tom Hamster correctly logged in"
+        );
+
+        equal(
             find("p").text(),
             "You are already signed-in!",
             "Signed-in message rendered"
