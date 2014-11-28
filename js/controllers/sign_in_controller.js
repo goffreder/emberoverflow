@@ -4,7 +4,7 @@ App.SignInController = Ember.Controller.extend({
     actions : {
         signIn : function() {
             var email = this.get("email");
-            userToLogin = App.User.FIXTURES.findBy("email", email);
+            var userToLogin = App.User.FIXTURES.findBy("email", email);
 
             if(userToLogin === void 0) {
                 alert("Wrong email!");
