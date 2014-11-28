@@ -9,15 +9,16 @@ App.IndexController = Ember.ArrayController.extend({
 App.ApplicationController = Ember.Controller.extend({
     signedInUser : function() {
         return this.store.find('user', localStorage.currentUser);
-    }.property(),
+    }.property('App.currentUser'),
 
     userSignedIn : function() {
-        return localStorage.currentUser !== null;
-    }.property(),
+        return localStorage.currentUser !== void 0;
+    }.property('App.currentUser'),
 
     actions : {
         signOut : function() {
             delete localStorage.currentUser;
+            App.set('currentUser', void 0);
         }
     }
 });
