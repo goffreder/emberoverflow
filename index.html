@@ -17,6 +17,14 @@
             </div>
 
             <ul class="nav navbar-nav">
+                {{#if userSignedIn}}
+                    <li>
+                        {{#link-to "ask-question"}}
+                            Ask Question
+                        {{/link-to}}
+                    </li>
+                {{/if}}
+
                 <li>
                     {{#link-to "about"}}
                         About site
@@ -118,6 +126,66 @@
         </div>
     </script>
 
+    <script type="text/x-handlebars" id="ask-question">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>
+                    Ask New Question
+                </h2>
+
+                <form {{action "askQuestion" on="submit"}}>
+                    <div class="form-group">
+                        <label for="title">Question title</label>
+
+                        {{input id="title"
+                            value=title
+                            classNames="form-control"
+                            placeholder="Give your question accurate name"}}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="question">Question</label>
+
+                        {{textarea id="question"
+                            value=question
+                            classNames="form-control"
+                            placeholder="Describe your problem in as much detail as possible"}}
+                    </div>
+
+                    {{#if question}}
+                        <div class="form-group">
+                            <p>Question preview:</p>
+                            <h4>{{title}}</h4>
+                            <p>{{question}}</p>
+                        </div>
+                    {{/if}}
+
+                    <button class="btn btn-primary" type="submit">
+                        Ask Question!
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Maybe this will help</h2>
+
+                {{#each latestQuestions}}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {{#link-to "question" this}}
+                                {{title}}
+                            {{/link-to}}
+
+                            {{question}}
+                            <br>
+                            - {{author.fullname}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
     <script src="js/libs/jquery-1.10.2.js"></script>
     <script src="js/libs/handlebars-v1.3.0.js"></script>
     <script src="js/libs/ember-1.8.1.js"></script>
@@ -129,8 +197,10 @@
     <script src="js/models/user_model.js"></script>
     <script src="js/fixtures/question_fixtures.js"></script>
     <script src="js/fixtures/user_fixtures.js"></script>
+    <script src="js/routes/question_routes.js"></script>
     <script src="js/routes/application_routes.js"></script>
     <script src="js/controllers/sign_in_controller.js"></script>
+    <script src="js/controllers/question_controller.js"></script>
     <script src="js/controllers/application_controllers.js"></script>
     <!-- to activate the test runner, add the "?test" query string parameter -->
     <script src="tests/runner.js"></script>
