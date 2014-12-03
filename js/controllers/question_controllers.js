@@ -1,4 +1,15 @@
-App.AskQuestionController = Ember.ArrayController.extend({
+App.SetAuthorMixin = Ember.Mixin.create({
+    needs : ['application'],
+
+    setAuthorFor : function(object) {
+        this.get('controllers.application.signedInUser').then(function(user) {
+            object.set('user', user);
+        });
+    }
+});
+
+App.AskQuestionController = Ember.ArrayController.extend(
+    App.SetAuthorMixin, {
     needs : ['application'],
     sortProperties : ['date'],
     sortAscending : false,
@@ -15,9 +26,7 @@ App.AskQuestionController = Ember.ArrayController.extend({
                 date : new Date()
             });
 
-            this.get('controllers.application.signedInUser').then(function(user) {
-                question.set('author', user);
-            });
+            this.setAuthorFor(question);
 
             var controller = this;
 
@@ -33,7 +42,8 @@ App.AskQuestionController = Ember.ArrayController.extend({
     }
 });
 
-App.QuestionController = Ember.ObjectController.extend({
+App.QuestionController = Ember.ObjectController.extend(
+    App.SetAuthorMixin, {
     needs : ['application'],
 
     actions : {
@@ -44,9 +54,7 @@ App.QuestionController = Ember.ObjectController.extend({
                 date : new Date()
             });
 
-            this.get("controllers.application.signedInUser").then(function(user) {
-                answer.set("user", user);
-            });
+            this.setAuthorFor(answer);
 
             var controller = this;
 
