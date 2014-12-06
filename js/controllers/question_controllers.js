@@ -3,7 +3,7 @@ App.SetAuthorMixin = Ember.Mixin.create({
 
     setAuthorFor : function(object) {
         this.get('controllers.application.signedInUser').then(function(user) {
-            object.set('user', user);
+            object.set('author', user);
         });
     }
 });
