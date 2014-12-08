@@ -87,21 +87,11 @@
         {{partial "answers"}}
 
         {{#if controllers.application.userSignedIn}}
-        <hr>
 
-        <div class="row">
-            <div class="col-md-8">
-                <h4>Submit your answer:</h4>
+            <hr>
 
-                <form {{action "answerQuestion" on="submit"}}>
-                    <div class="form-group">
-                        {{textarea id="answer" value=answer classNames="form-control"}}
-                    </div>
+            {{view App.AnswerFormView}}
 
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
         {{/if}}
     </script>
 
@@ -236,6 +226,22 @@
         </div>
     </script>
 
+    <script type="text/x-handlebars" id="answer_form">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Submit your answer:</h4>
+
+                <form {{action "answerQuestion" on="submit"}}>
+                    <div class="form-group">
+                        {{textarea id="answer" value=answer classNames="form-control"}}
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </script>
+
     <script src="js/libs/jquery-1.10.2.js"></script>
     <script src="js/libs/handlebars-v1.3.0.js"></script>
     <script src="js/libs/ember-1.8.1.js"></script>
@@ -255,6 +261,7 @@
     <script src="js/controllers/question_controllers.js"></script>
     <script src="js/controllers/application_controllers.js"></script>
     <script src="js/components/question_components.js"></script>
+    <script src="js/views/answer_views.js"></script>
     <!-- to activate the test runner, add the "?test" query string parameter -->
     <script src="tests/runner.js"></script>
 </body>
