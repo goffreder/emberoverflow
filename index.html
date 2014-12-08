@@ -84,7 +84,7 @@
 
         <hr>
 
-        {{partial "answers"}}
+        {{render "answers" answers}}
 
         {{#if controllers.application.userSignedIn}}
 
@@ -206,7 +206,7 @@
         (asked by {{question.author.fullname}})
     </script>
 
-    <script type="text/x-handlebars" id="_answers">
+    <script type="text/x-handlebars" id="answers">
         <div class="row">
             <div class="col-md-8">
                 {{#each answers}}
@@ -260,6 +260,7 @@
     <script src="js/controllers/sign_in_controller.js"></script>
     <script src="js/controllers/question_controllers.js"></script>
     <script src="js/controllers/application_controllers.js"></script>
+    <script src="js/controllers/answer_controllers.js"></script>
     <script src="js/components/question_components.js"></script>
     <script src="js/views/answer_views.js"></script>
     <!-- to activate the test runner, add the "?test" query string parameter -->
