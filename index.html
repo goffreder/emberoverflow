@@ -56,15 +56,11 @@
                 <h2>{{siteTitle}}</h2>
                 <p>It is {{currentTime}}</p>
 
+                <h3>Latest questions</h3>
+
                 <ul>
                     {{#each}}
-                        <li>
-                            {{#link-to "question" this}}
-                                {{title}}
-                            {{/link-to}}
-
-                            (asked by {{author.fullname}})
-                        </li>
+                        {{question-preview question=this}}
                     {{/each}}
                 </ul>
             </div>
@@ -224,6 +220,18 @@
         </div>
     </script>
 
+    <script type="text/x-handlebars" id="components/question-preview">
+        {{#link-to "question" question}}
+            {{question.title}}
+        {{/link-to}}
+
+        {{#if hasAnswers}}
+            <span class="label label-default">{{answersCount}} {{pluralForm}}</span>
+        {{/if}}
+
+        (asked by {{question.author.fullname}})
+    </script>
+
     <script src="js/libs/jquery-1.10.2.js"></script>
     <script src="js/libs/handlebars-v1.3.0.js"></script>
     <script src="js/libs/ember-1.8.1.js"></script>
@@ -242,6 +250,7 @@
     <script src="js/controllers/sign_in_controller.js"></script>
     <script src="js/controllers/question_controllers.js"></script>
     <script src="js/controllers/application_controllers.js"></script>
+    <script src="js/components/question_components.js"></script>
     <!-- to activate the test runner, add the "?test" query string parameter -->
     <script src="tests/runner.js"></script>
 </body>
