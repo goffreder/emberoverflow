@@ -84,23 +84,7 @@
 
         <hr>
 
-        <div class="row">
-            <div class="col-md-8">
-                {{#each answers}}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            {{author.fullname}} on {{date}}
-                        </div>
-
-                        <div class="panel-body">
-                            {{answer}}
-                        </div>
-                    </div>
-                {{else}}
-                    <h4>Sorry, there are no answers to this question</h4>
-                {{/each}}
-            </div>
-        </div>
+        {{partial "answers"}}
 
         {{#if controllers.application.userSignedIn}}
         <hr>
@@ -230,6 +214,26 @@
         {{/if}}
 
         (asked by {{question.author.fullname}})
+    </script>
+
+    <script type="text/x-handlebars" id="_answers">
+        <div class="row">
+            <div class="col-md-8">
+                {{#each answers}}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {{author.fullname}} on {{date}}
+                        </div>
+
+                        <div class="panel-body">
+                            {{answer}}
+                        </div>
+                    </div>
+                {{else}}
+                    <h4>Sorry, there are no answers to this question</h4>
+                {{/each}}
+            </div>
+        </div>
     </script>
 
     <script src="js/libs/jquery-1.10.2.js"></script>
