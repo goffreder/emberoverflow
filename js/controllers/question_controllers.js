@@ -68,3 +68,11 @@ App.QuestionController = Ember.ObjectController.extend(
         }
     }
 });
+
+App.QuestionsController = Ember.ArrayController.extend({
+    siteTitle : "Welcome to Emberoverflow",
+
+    currentTime : function() {
+        return(new Date());
+    }.property()
+});
