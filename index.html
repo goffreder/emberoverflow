@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h2>{{siteTitle}}</h2>
-                <p>It is {{currentTime}}</p>
+                <p>It is {{currentDate "LL"}}</p>
 
                 <h3>Latest questions</h3>
 
@@ -251,8 +251,10 @@
     <script src="js/libs/ember-1.8.1.js"></script>
     <script src="http://builds.emberjs.com/beta/ember-data.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
     <script src="js/app.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/models/question_model.js"></script>
     <script src="js/models/answer_model.js"></script>
     <script src="js/models/user_model.js"></script>
