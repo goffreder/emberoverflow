@@ -46,6 +46,7 @@ App.QuestionController = Ember.ObjectController.extend(
     isEditing : false,
 
     canEditQuestion : function() {
+        this.set('isEditing', false);
         return this.get('author.id') === App.currentUser;
     }.property('model'),
 
