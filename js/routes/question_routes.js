@@ -9,3 +9,12 @@ App.QuestionsRoute = Ember.Route.extend({
         return this.store.find('question');
     }
 });
+
+App.QuestionRoute = Ember.Route.extend({
+    actions : {
+        didTransition : function() {
+            this.controller.set('isEditing', false);
+            return true;
+        }
+    }
+});
