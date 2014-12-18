@@ -45,6 +45,10 @@ App.QuestionController = Ember.ObjectController.extend(
     App.SetAuthorMixin, {
     isEditing : false,
 
+    resetIsEditing : function() {
+        this.set('isEditing', false);
+    }.observes('model.id'),
+
     canEditQuestion : function() {
         return this.get('author.id') === App.currentUser;
     }.property('author.id'),
